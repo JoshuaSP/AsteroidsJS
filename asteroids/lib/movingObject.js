@@ -1,5 +1,7 @@
 (function() {
-  window.A = A || {};
+  if (typeof A === "undefined") {
+    A = {};
+  };
 
   A.MovingObject = function(opts) {
     this.pos = opts.pos;

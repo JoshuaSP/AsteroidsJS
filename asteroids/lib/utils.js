@@ -1,5 +1,10 @@
 !function() {
-  window.A = A || {};
+  if (typeof A === "undefined") {
+    A = {};
+  }
+  if (typeof A === "undefined") {
+  A = {};
+};
 
   A.util = {
     inherits: function(parent, child) {
@@ -16,7 +21,7 @@
     randomPosition: function(rangeX, rangeY) {
       return [Math.random() * rangeX, Math.random() * rangeY];
     }
-    
+
   };
 
 }();
