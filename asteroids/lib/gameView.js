@@ -13,7 +13,7 @@
   A.GameView.prototype.start = function() {
     var self = this;
     setInterval(function() {
-      self.game.moveObjects();
+      self.game.step();
       self.game.draw(self.ctx);
     }, 20);
   };

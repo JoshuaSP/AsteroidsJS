@@ -3,7 +3,7 @@
     A = {};
   };
 
-  var NUM_ASTEROIDS = 15;
+  var NUM_ASTEROIDS = 7;
 
   A.Game = function(dimX, dimY) {
     this.asteroids = [];
@@ -15,7 +15,7 @@
   A.Game.prototype = {
     addAsteroids: function() {
       for (var i = 0; i < NUM_ASTEROIDS; i++) {
-        this.asteroids.push(new A.Asteroid(A.util.randomPosition(this.dimX, this.dimY)));
+        this.asteroids.push(new A.Asteroid(A.util.randomPosition(this.dimX, this.dimY), this));
       }
     },
 
@@ -30,6 +30,31 @@
       this.asteroids.forEach(function(asteroid) {
         asteroid.move();
       });
+    },
+
+    wrap: function(pos) {
+      pos[0] = (pos[0] + this.dimX) % this.dimX;
+      pos[1] = (pos[1] + this.dimY) % this.dimY;
+    },
+
+    checkCollisions: function() {
+      var self = this;
+      self.asteroids.forEach(function(asteroid1) {
+        self.asteroids.forEach(function(asteroid2) {
+          if (asteroid1 !== asteroid2 && asteroid1.isCollidedWith(asteroid2)) {
+            asteroid1.collideWith(asteroid2);
+          }
+        })
+      })
+    },
+
+    step: function() {
+      this.moveObjects();
+      this.checkCollisions();
+    },
+
+    remove: function(asteroid) {
+      this.asteroids.splice(this.asteroids.indexOf(asteroid), 1);
     }
   };
 })();

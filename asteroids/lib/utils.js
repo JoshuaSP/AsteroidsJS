@@ -20,6 +20,10 @@
 
     randomPosition: function(rangeX, rangeY) {
       return [Math.random() * rangeX, Math.random() * rangeY];
+    },
+
+    distance: function(vector1, vector2) {
+      return Math.sqrt(Math.pow((vector1[0] - vector2[0]), 2) + Math.pow((vector1[1] - vector2[1]), 2))
     }
 
   };
