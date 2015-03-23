@@ -1,4 +1,4 @@
-(function() {
+!function() {
   if (typeof A === "undefined") {
     A = {};
   };
@@ -57,4 +57,4 @@
       this.asteroids.splice(this.asteroids.indexOf(asteroid), 1);
     }
   };
-})();
+}();

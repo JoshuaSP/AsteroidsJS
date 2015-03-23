@@ -1,4 +1,4 @@
-(function() {
+!function() {
   if (typeof A === "undefined") {
     A = {};
   };
@@ -42,4 +42,4 @@
     }
   };
 
-})();
+}();
