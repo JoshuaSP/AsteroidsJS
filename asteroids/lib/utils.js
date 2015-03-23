@@ -11,6 +11,12 @@
 
     randomVector: function(range) {
       return([Math.random() * 2 * range - range, Math.random() * 2 * range - range]);
+    },
+
+    randomPosition: function(rangeX, rangeY) {
+      return [Math.random() * rangeX, Math.random() * rangeY];
     }
+    
+  };
 
 }();
