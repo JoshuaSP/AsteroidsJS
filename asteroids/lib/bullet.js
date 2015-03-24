@@ -29,4 +29,13 @@
       this.game.remove(this);
     }
   }
+
+  A.Bullet.prototype.move = function() {
+    this.pos[0] += this.vel[0];
+    this.pos[1] += this.vel[1];
+    if (this.pos[0] < 0 || this.pos[1] < 0 ||
+        this.pos[0] > this.game.dimX || this.pos[1] > this.game.dimY ) {
+      this.game.remove(this);
+    }
+  };
 }();
