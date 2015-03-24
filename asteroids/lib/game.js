@@ -8,6 +8,7 @@
 
   A.Game = function(dimX, dimY) {
     this.asteroids = [];
+    this.bullets = [];
     this.dimX = dimX;
     this.dimY = dimY;
     this.addAsteroids();
@@ -55,12 +56,20 @@
       this.checkCollisions();
     },
 
-    remove: function(asteroid) {
-      this.asteroids.splice(this.asteroids.indexOf(asteroid), 1);
+    addBullet: function(bullet) {
+      this.bullets.push(bullet);
+    },
+
+    remove: function(obj) {
+      if (obj instanceof A.Asteroid) {
+        this.asteroids.splice(this.asteroids.indexOf(obj), 1);
+      } else if (obj instanceof A.Bullet) {
+        this.bullets.splice(this.bullets.indexOf(obj), 1);
+      }
     },
 
     allObjects: function() {
-      return this.asteroids.concat(this.ship);
+      return this.asteroids.concat(this.ship).concat(this.bullets);
     },
 
     randomPosition: function() {

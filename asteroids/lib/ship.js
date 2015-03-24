@@ -3,7 +3,7 @@
     A = {};
   };
 
-  var COLOR = '#4f607c';
+  var COLOR = '#01ca7e';
   var RADIUS = 20;
   var ARC = 2 * Math.PI;
   var IMPULSE = 1.2;
@@ -25,7 +25,7 @@
   A.Ship.prototype.relocate = function() {
     this.pos = this.game.randomPosition();
     this.vel = [0,0];
-  }
+  };
 
   A.Ship.prototype.power = function(impulse) {
     this.vel = [this.vel[0] + IMPULSE * impulse[0], this.vel[1] + IMPULSE * impulse[1]];
@@ -35,7 +35,14 @@
       } else {
         return coord;
       }
-    })
-  }
+    });
+  };
+
+  A.Ship.prototype.fireBullet = function () {
+    if (A.util.distance([0,0], this.vel)) {
+      var bullet = new A.Bullet(this, this.game);
+      this.game.addBullet(bullet);
+    }
+  };
 
 }();

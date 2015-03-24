@@ -22,7 +22,7 @@
   A.GameView.prototype.bindKeyHandlers = function() {
     var self = this;
     key('space', function() {
-
+      self.game.ship.fireBullet();
     });
     key('up', function() {
       self.game.ship.power([0, -1]);
