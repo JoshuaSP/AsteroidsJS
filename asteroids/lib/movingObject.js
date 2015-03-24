@@ -14,7 +14,7 @@
 
   A.MovingObject.prototype = {
     draw: function(ctx) {
-      var startAngle = Math.atan(this.vel[1]/this.vel[0]) + Math.PI + (this.arc / 2);
+      var startAngle = 0;
       ctx.fillStyle = this.color;
       ctx.beginPath();
       ctx.arc(this.pos[0],
@@ -37,8 +37,6 @@
     },
 
     collideWith: function(otherObj) {
-      this.game.remove(this);
-      this.game.remove(otherObj);
     }
   };
 

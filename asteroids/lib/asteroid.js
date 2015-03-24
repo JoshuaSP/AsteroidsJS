@@ -4,8 +4,8 @@
   };
 
   var COLOR = '#7f8c8d';
-  var RADIUS = 60;
-  var MAXSPEED = 20;
+  var RADIUS = 40;
+  var MAXSPEED = 5;
 
 
   A.Asteroid = function (pos, game){
@@ -19,10 +19,12 @@
     });
   };
 
-  A.Asteroid.prototype = {
-    COLOR: COLOR,
-    RADIUS: RADIUS
+  A.util.inherits(A.MovingObject, A.Asteroid);
+
+  A.Asteroid.prototype.collideWith = function(otherObj) {
+    if (otherObj instanceof A.Ship) {
+      otherObj.relocate();
+    }
   };
 
-  A.util.inherits(A.MovingObject, A.Asteroid);
 }();

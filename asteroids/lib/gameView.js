@@ -12,10 +12,30 @@
 
   A.GameView.prototype.start = function() {
     var self = this;
+    self.bindKeyHandlers();
     setInterval(function() {
       self.game.step();
       self.game.draw(self.ctx);
     }, 20);
+  };
+
+  A.GameView.prototype.bindKeyHandlers = function() {
+    var self = this;
+    key('space', function() {
+
+    });
+    key('up', function() {
+      self.game.ship.power([0, -1]);
+    });
+    key('down', function() {
+      self.game.ship.power([0, 1]);
+    });
+    key('left', function() {
+      self.game.ship.power([-1, 0]);
+    });
+    key('right', function() {
+      self.game.ship.power([1, 0]);
+    });
   };
 
 }();
