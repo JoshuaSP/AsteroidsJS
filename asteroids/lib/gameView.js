@@ -12,10 +12,12 @@
 
   A.GameView.prototype.start = function() {
     var self = this;
+    var img = new Image();
+    img.src = 'lib/deepSpace.jpg';
     self.bindKeyHandlers();
     setInterval(function() {
       self.game.step();
-      self.game.draw(self.ctx);
+      self.game.draw(self.ctx, img);
     }, 20);
   };
 

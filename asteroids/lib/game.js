@@ -22,8 +22,9 @@
       }
     },
 
-    draw: function(ctx) {
-      ctx.clearRect(0, 0, this.dimX, this.dimY);
+    draw: function(ctx, image) {
+      // ctx.clearRect(0, 0, this.dimX, this.dimY);
+      ctx.drawImage(image, 0, 0);
       for (var i = 0; i < this.allObjects().length; i++) {
         this.allObjects()[i].draw(ctx);
       }
